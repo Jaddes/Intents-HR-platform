@@ -9,6 +9,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  Typography,
 } from '@mui/material';
 import type { Candidate, Skill } from '../types';
 
@@ -50,8 +51,13 @@ export function AssignSkillDialog({
 
   return (
     <Dialog fullWidth maxWidth="xs" open={open} onClose={saving ? undefined : onClose}>
-      <DialogTitle>Add skill to {candidate?.fullName}</DialogTitle>
-      <DialogContent sx={{ pt: 1 }}>
+      <DialogTitle sx={{ px: 3, pt: 3, pb: 1 }}>
+        <Typography variant="h5">Add skill</Typography>
+        <Typography color="text.secondary" variant="body2" sx={{ mt: 0.75 }}>
+          Assign a skill to {candidate?.fullName}.
+        </Typography>
+      </DialogTitle>
+      <DialogContent sx={{ px: 3, pt: 2 }}>
         <FormControl fullWidth>
           <InputLabel id="assign-skill-label">Skill</InputLabel>
           <Select
@@ -68,11 +74,16 @@ export function AssignSkillDialog({
           </Select>
         </FormControl>
       </DialogContent>
-      <DialogActions sx={{ px: 3, pb: 3 }}>
-        <Button color="inherit" disabled={saving} onClick={onClose}>
+      <DialogActions sx={{ gap: 1.5, px: 3, pb: 3, pt: 2 }}>
+        <Button color="inherit" disabled={saving} onClick={onClose} sx={{ minHeight: 42, minWidth: 96 }}>
           Cancel
         </Button>
-        <Button disabled={saving || !skillId} variant="contained" onClick={handleAssign}>
+        <Button
+          disabled={saving || !skillId}
+          variant="contained"
+          onClick={handleAssign}
+          sx={{ minHeight: 42, minWidth: 118 }}
+        >
           Add skill
         </Button>
       </DialogActions>

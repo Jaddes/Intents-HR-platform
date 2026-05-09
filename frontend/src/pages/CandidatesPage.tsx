@@ -63,21 +63,33 @@ export function CandidatesPage({
 }: CandidatesPageProps) {
   return (
     <Stack spacing={3}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
-        <Box>
+      <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', gap: 2 }}>
+        <Box sx={{ minWidth: 0 }}>
           <Typography variant="h4">Candidates</Typography>
           <Typography color="text.secondary" sx={{ mt: 0.5 }}>
             Search, edit, and maintain candidate skill profiles.
           </Typography>
         </Box>
-        <Button startIcon={<PersonAddAltIcon />} variant="contained" onClick={onCreateClick}>
+        <Button
+          startIcon={<PersonAddAltIcon />}
+          variant="contained"
+          onClick={onCreateClick}
+          sx={{ flex: '0 0 auto', minHeight: 46, minWidth: 176, px: 2.5 }}
+        >
           Add candidate
         </Button>
       </Box>
 
       <Card>
         <CardContent>
-          <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
+          <Box
+            sx={{
+              alignItems: 'center',
+              display: 'grid',
+              gap: 2,
+              gridTemplateColumns: { xs: '1fr', md: 'minmax(260px, 1fr) minmax(220px, 320px) auto auto' },
+            }}
+          >
             <TextField
               fullWidth
               label="Search by name"
@@ -100,13 +112,22 @@ export function CandidatesPage({
                 ))}
               </Select>
             </FormControl>
-            <Button startIcon={<SearchIcon />} variant="contained" onClick={onSearch}>
+            <Button
+              startIcon={<SearchIcon />}
+              variant="contained"
+              onClick={onSearch}
+              sx={{ minHeight: 56, minWidth: 118, px: 2.5 }}
+            >
               Search
             </Button>
-            <Button color="inherit" onClick={onClearSearch}>
+            <Button
+              color="inherit"
+              onClick={onClearSearch}
+              sx={{ minHeight: 56, minWidth: 96, px: 2.5 }}
+            >
               Clear
             </Button>
-          </Stack>
+          </Box>
         </CardContent>
       </Card>
 

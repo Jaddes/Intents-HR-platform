@@ -35,7 +35,7 @@ const navItems: Array<{ key: PageKey; label: string; icon: ReactNode }> = [
 
 export function AppLayout({ activePage, onPageChange, children }: AppLayoutProps) {
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+    <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', overflowX: 'hidden' }}>
       <Drawer
         variant="permanent"
         sx={{
@@ -93,25 +93,37 @@ export function AppLayout({ activePage, onPageChange, children }: AppLayoutProps
         elevation={0}
         position="fixed"
         sx={{
-          width: `calc(100% - ${drawerWidth}px)`,
-          ml: `${drawerWidth}px`,
+          left: `${drawerWidth}px`,
+          right: 0,
+          width: 'auto',
           bgcolor: 'background.paper',
           color: 'text.primary',
           borderBottom: '1px solid rgba(148, 163, 184, 0.2)',
         }}
       >
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <Box>
+        <Toolbar sx={{ gap: 2, justifyContent: 'space-between', px: 3 }}>
+          <Box sx={{ minWidth: 0 }}>
             <Typography variant="h6">HR Candidate Management</Typography>
             <Typography color="text.secondary" variant="body2">
               Manage candidates, skills, and hiring profiles
             </Typography>
           </Box>
-          <Avatar sx={{ bgcolor: 'secondary.main' }}>HR</Avatar>
+          <Avatar sx={{ bgcolor: 'secondary.main', flex: '0 0 auto' }}>HR</Avatar>
         </Toolbar>
       </AppBar>
 
-      <Box component="main" sx={{ ml: `${drawerWidth}px`, pt: 12, px: 4, pb: 5 }}>
+      <Box
+        component="main"
+        sx={{
+          boxSizing: 'border-box',
+          ml: `${drawerWidth}px`,
+          overflowX: 'hidden',
+          pb: 5,
+          pt: 12,
+          px: 3,
+          width: `calc(100% - ${drawerWidth}px)`,
+        }}
+      >
         {children}
       </Box>
     </Box>

@@ -25,14 +25,19 @@ type SkillsPageProps = {
 export function SkillsPage({ skills, loading, onCreateClick }: SkillsPageProps) {
   return (
     <Stack spacing={3}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
-        <Box>
+      <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', gap: 2 }}>
+        <Box sx={{ minWidth: 0 }}>
           <Typography variant="h4">Skills</Typography>
           <Typography color="text.secondary" sx={{ mt: 0.5 }}>
             Maintain the reusable skill catalog for candidate profiles.
           </Typography>
         </Box>
-        <Button startIcon={<AddIcon />} variant="contained" onClick={onCreateClick}>
+        <Button
+          startIcon={<AddIcon />}
+          variant="contained"
+          onClick={onCreateClick}
+          sx={{ flex: '0 0 auto', minHeight: 46, minWidth: 138, px: 2.5 }}
+        >
           Add skill
         </Button>
       </Box>
