@@ -11,6 +11,11 @@ The application stores candidates, skills, and candidate-skill assignments in Po
 - PostgreSQL
 - Npgsql Entity Framework Core provider
 - Swagger / Swashbuckle
+- React
+- TypeScript
+- Material UI
+- Vite
+- Axios
 - C# nullable reference types
 
 ## Project Structure
@@ -21,6 +26,7 @@ The application stores candidates, skills, and candidate-skill assignments in Po
 - `Services/` - business logic and service interfaces
 - `Controllers/` - REST API controllers
 - `Migrations/` - EF Core database migrations
+- `frontend/` - React Material UI admin dashboard
 
 ## PostgreSQL Setup
 
@@ -61,6 +67,32 @@ Swagger is available in Development mode at:
 
 ```text
 http://localhost:5121/swagger
+```
+
+Run the React frontend:
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend runs at:
+
+```text
+http://localhost:5173
+```
+
+By default, the frontend calls the backend at:
+
+```text
+http://localhost:5121
+```
+
+To override the API URL, create a `frontend/.env` file:
+
+```text
+VITE_API_BASE_URL=http://localhost:5121
 ```
 
 ## Migration Commands
@@ -104,6 +136,20 @@ GET    /api/candidates/search?name=&skillIds=&skillNames=
 GET  /api/skills
 POST /api/skills
 ```
+
+## Frontend
+
+The React frontend provides a clean Material UI admin dashboard for the HR API.
+
+Main screens:
+
+- Dashboard overview with candidate and skill statistics
+- Candidate management table with search and skill filtering
+- Candidate create and edit dialogs
+- Candidate skill assignment and removal
+- Skill list and skill creation dialog
+
+The frontend uses reusable components for layout, overview cards, empty states, dialogs, API errors, and page structure. It handles loading states and shows user-friendly API error messages returned by the backend.
 
 ## Seed Data
 
